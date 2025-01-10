@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Function to calculate savings
-def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pris_armatur):
+def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pris_armatur, additional_variable):
     old_tube_watts = {"T8_58W": 70, "T8_36W": 43}
     new_tube_watts = {"LED_20W": 20, "LED_18W": 18}
 
@@ -29,7 +29,9 @@ def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pri
 
     saving_CO2 = ((num_fixtures * 2) / 100) * 2.5
 
-    return old_energy_cost, new_energy_cost, savings, break_even, total_inpris, saving_CO2
+    totalkostnad = (total_inpris + additional_variable)
+
+    return old_energy_cost, new_energy_cost, savings, break_even, total_inpris, saving_CO2, totalkostnad
 
 # Function to calculate trees needed for CO2 offset
 def calculate_trees(saving_CO2):
@@ -60,16 +62,17 @@ hours_per_year = st.number_input("Ange antalet driftstimmar/år:", min_value=1, 
 cost_per_kwh = st.number_input("Ange elpriset per kWh:", min_value=0.01, value=0.15, format="%.2f")
 tube_type = st.selectbox("Välj lysrörstyp som skall bytas:", ["T8_58W", "T8_36W"])
 pris_armatur = st.number_input("Ange inköpskostnad för armatur:", min_value=1, value=800)
+additional_variable = st.number_input("Ange ev. extrakostnad, ex.vis installation:", min_value=1, value=1000)
 
 if st.button("Beräkna besparingen"):
-    old_cost, new_cost, savings, break_even, total_inpris, saving_CO2 = calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pris_armatur)
+    old_cost, new_cost, savings, break_even, total_inpris, saving_CO2, totalkostnad = calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pris_armatur, additional_variable)
 
     st.write(f"### Resultat för {tube_type}:")
     st.write(f"**Årlig driftskostnad för de gamla lysrören:** SEK {old_cost:.0f}")
     st.write(f"**Ny driftskostnad för de nya LED-rören:** SEK {new_cost:.0f}")
     st.write(f"**Årlig driftsbesparing:** SEK {savings:.0f}")
     st.write(f"**Inköpspris för ny armatur:** SEK {total_inpris:.0f}")
-    st.write(f"**Eventuell extra kostnad:** SEK {additional_variable:.0f}")
+    st.write(f"**Ev. extra kostnad för installation:** SEK {additional_variable:.0f}")
     st.write(f"**Minskat CO2-utsläpp:** {saving_CO2:.2f} ton")
 
     # Calculate break-even output
