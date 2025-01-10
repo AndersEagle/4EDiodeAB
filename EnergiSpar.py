@@ -31,6 +31,12 @@ def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pri
 
     return old_energy_cost, new_energy_cost, savings, break_even, total_inpris, saving_CO2
 
+# Function to calculate trees needed for CO2 offset
+def calculate_trees(saving_CO2):
+    kg_co2_saved = saving_CO2 * 1000  # Convert tons to kg
+    trees_required = kg_co2_saved / 21.77  # 1 tree absorbs ~21.77 kg CO2 annually
+    return trees_required
+
 # Streamlit Interface
 # Display the logo above the headline
 # Create two columns
@@ -63,6 +69,8 @@ if st.button("Beräkna besparingen"):
     st.write(f"**Ny driftskostnad för de nya LED-rören:** SEK {new_cost:.0f}")
     st.write(f"**Årlig driftsbesparing:** SEK {savings:.0f}")
     st.write(f"**Inköpspris för ny armatur:** SEK {total_inpris:.0f}")
+    st.write(f"**Eventuell extra kostnad:** SEK {additional_variable:.0f}")
+    st.write(f"**Minskat CO2-utsläpp:** {saving_CO2:.2f} ton")
 
     # Calculate break-even output
     if break_even > 1:
@@ -72,4 +80,4 @@ if st.button("Beräkna besparingen"):
         break_even_months = 12 * break_even
         st.write(f"**Tid till breakeven:** {break_even_months:.2f} månader")
         
-    st.write(f"**Minskat CO2-utsläpp:** {saving_CO2:.2f} ton")
+    st.write(f"**Antal träd som krävs för att kompensera för motsvarande CO2:** {trees_required:.0f} träd")
