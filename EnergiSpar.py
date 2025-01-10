@@ -32,9 +32,20 @@ def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pri
     return old_energy_cost, new_energy_cost, savings, break_even, total_inpris, saving_CO2
 
 # Streamlit Interface
-
 # Display the logo above the headline
-st.image("4EDIODE.jpg", use_column_width=True)  # Adjust the file path to where your logo is stored
+# Create two columns
+col1, col2 = st.columns([1, 1])  # Equal width columns
+
+# Display the first logo in the left column
+with col1:
+    st.image("4EDIODE.png", use_column_width=True)
+
+# Display the second logo in the right column
+with col2:
+    st.image("Diode_logga.png", use_column_width=True)
+
+# Add some space (optional) before the headline
+st.markdown("<br>", unsafe_allow_html=True)
 st.title("4E DIODE AB - Besparingskalkylator")
 
 # User input
