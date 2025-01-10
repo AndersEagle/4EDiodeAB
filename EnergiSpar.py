@@ -23,7 +23,7 @@ def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pri
 
     savings = old_energy_cost - new_energy_cost
 
-    break_even = ((pris_armatur * num_fixtures) + new_energy_cost) / old_energy_cost
+    break_even = ((pris_armatur * num_fixtures) + new_energy_cost + additional_variable) / old_energy_cost
 
     total_inpris = (pris_armatur * num_fixtures)
 
