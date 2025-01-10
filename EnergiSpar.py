@@ -46,11 +46,11 @@ col1, col2 = st.columns([1, 1])  # Equal width columns
 
 # Display the first logo in the left column
 with col1:
-    st.image("4EDIODE.png", use_column_width=True)
+    st.image("4EDIODE.png", use_container_width=True)
 
 # Display the second logo in the right column
 with col2:
-    st.image("Diode_logga.png", use_column_width=True)
+    st.image("Diode_logga.png", use_container_width=True)
 
 # Add some space (optional) before the headline
 st.markdown("<br>", unsafe_allow_html=True)
