@@ -62,7 +62,7 @@ page_bg_img = """
 }
 
 [data-testid="stSidebar"] {
-    background-color: rgba(255, 255, 255, 0.8); /* Transparent sidebar */
+    background-color: rgba(72, 71, 71, 0.8); /* Transparent sidebar */
 }
 
 div.stTitle {
