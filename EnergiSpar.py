@@ -62,12 +62,12 @@ page_bg_img = """
 }
 
 [data-testid="stSidebar"] {
-    background-color: rgba(72, 71, 71, 0.8); /* Transparent sidebar */
+    background-color: rgba(248, 247, 247, 0.8); /* Transparent sidebar */
 }
 
 div.stTitle {
     color: white;  /* White title text */
-    font-size: 2rem;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -79,14 +79,14 @@ label {
 
 div.stNumberInput label,
 div.stMarkdownContainer, div.stSelectbox label, div.stButton button {
-    color: white; /* Adjust form text color */
+    color: black; /* Adjust form text color */
     font-weight: bold;
     font-size: 16px;
 }
 
 div.stNumberInput input {
     background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent input background */
-    color: white; /* Input text color */
+    color: black; /* Input text color */
     font-weight: bold;
 }
 
