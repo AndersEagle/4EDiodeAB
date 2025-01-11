@@ -79,7 +79,7 @@ label {
 
 div.stNumberInput label,
 div.stMarkdownContainer, div.stSelectbox label, div.stButton button {
-    color: black; /* Adjust form text color */
+    color: white; /* Adjust form text color */
     font-weight: bold;
     font-size: 16px;
 }
