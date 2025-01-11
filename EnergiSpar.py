@@ -44,59 +44,53 @@ def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pri
 
 
 # Streamlit Interface
-# Add background image styling
+# Add background image and centering styling
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
     background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline.jpg");
-    background-size: contain;  /* Ensures the image fits entirely within the container */
-    background-position: center center;  /* Centers the image in the container */
-    background-attachment: fixed;  /* Ensures the background stays fixed when scrolling */
-    height: 100vh;  /* Ensures the background fills the entire viewport height */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Fill the full viewport */
+    padding: 0;
 }
 
-
 [data-testid="stSidebar"] {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent sidebar */
 }
 
 div.stTitle {
     color: white;  /* White title text */
     text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
-div.stSubtitle {
-    color: white;
-    text-align: center;
-}
-
-label, div[data-testid="stMarkdownContainer"], .stButton, .stNumberInput {
-    color: black; /* Black for better readability */
+div.stNumberInput label,
+div.stMarkdownContainer, div.stSelectbox label, div.stButton button {
+    color: white; /* Adjust form text color */
     font-weight: bold;
     font-size: 16px;
 }
 
 div.stNumberInput input {
-    background-color: white;
-    color: black;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent input background */
+    color: black; /* Input text color */
+    font-weight: bold;
 }
 
 div[data-testid="stToolbar"] {
-    visibility: hidden;
+    visibility: hidden; /* Hide the Streamlit menu */
 }
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-# Display the logos
-col1, col2 = st.columns([1, 1])  # Equal width columns
-with col1:
-    st.image("4EDIODE.png", use_container_width=True)
-with col2:
-    st.image("Diode_logga.png", use_container_width=True)
-
-# Add some space (optional) before the headline
-st.markdown("<br>", unsafe_allow_html=True)
+# Center the app content
 st.title("4E DIODE AB - Besparingskalkylator")
 
 # User input
@@ -110,12 +104,13 @@ tube_type = st.selectbox(
 pris_armatur = st.number_input("Ange inköpskostnad för armatur:", min_value=1, value=800)
 additional_variable = st.number_input("Ange ev. extrakostnad, ex.vis installation:", min_value=1, value=1000)
 
+# Calculate and display results
 if st.button("Beräkna besparingen"):
     old_cost, new_cost, savings, break_even, total_inpris, saving_CO2, totalkostnad, trees_required = calculate_savings(
         num_fixtures, hours_per_year, cost_per_kwh, tube_type, pris_armatur, additional_variable
     )
 
-    st.write(f"### Resultat för {tube_type}:")
+    st.markdown(f"<h3 style='color: white;'>Resultat för {tube_type}:</h3>", unsafe_allow_html=True)
     st.write(f"**Årlig driftskostnad för de gamla lysrören:** SEK {old_cost:.0f}")
     st.write(f"**Ny driftskostnad för de nya LED-rören:** SEK {new_cost:.0f}")
     st.write(f"**Årlig driftsbesparing:** SEK {savings:.0f}")
@@ -123,13 +118,11 @@ if st.button("Beräkna besparingen"):
     st.write(f"**Inkl. kostnad för installation:** SEK {totalkostnad:.0f}")
     st.write(f"**Minskat CO2-utsläpp:** {saving_CO2:.2f} ton")
 
-    # Calculate break-even output
     if break_even > 1:
-        break_even_years = break_even / 1
-        st.write(f"**Tid till breakeven:** {break_even_years:.2f} år")
+        st.write(f"**Tid till breakeven:** {break_even:.2f} år")
     else:
-        break_even_months = 12 * break_even
-        st.write(f"**Tid till breakeven:** {break_even_months:.2f} månader")
+        st.write(f"**Tid till breakeven:** {12 * break_even:.2f} månader")
 
     st.write(f"**Antal träd som krävs för att kompensera för motsvarande CO2:** {trees_required:.0f} träd")
+
 
