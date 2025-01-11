@@ -53,10 +53,12 @@ page_bg_img = """
     background-position: center;
     background-attachment: fixed;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;  /* Fill the full viewport */
+    height: 100vh;  /* Full viewport height */
     padding: 0;
+    text-align: center;  /* Center the text horizontally */
 }
 
 [data-testid="stSidebar"] {
@@ -65,8 +67,13 @@ page_bg_img = """
 
 div.stTitle {
     color: white;  /* White title text */
-    text-align: center;
     font-size: 2rem;
+    font-weight: bold;
+}
+
+label {
+    color: white;  /* Make the labels white */
+    font-size: 18px;  /* Increase font size for better readability */
     font-weight: bold;
 }
 
@@ -79,7 +86,7 @@ div.stMarkdownContainer, div.stSelectbox label, div.stButton button {
 
 div.stNumberInput input {
     background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent input background */
-    color: black; /* Input text color */
+    color: white; /* Input text color */
     font-weight: bold;
 }
 
