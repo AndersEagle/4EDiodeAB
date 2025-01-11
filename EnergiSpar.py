@@ -68,26 +68,26 @@ page_bg_img = """
 div.stTitle {
     color: white;  /* White title text */
     font-size: 24px;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 label {
     color: white;  /* Make the labels white */
     font-size: 18px;  /* Increase font size for better readability */
-    font-weight: bold;
+    font-weight: normal;
 }
 
 div.stNumberInput label,
 div.stMarkdownContainer, div.stSelectbox label, div.stButton button {
     color: white; /* Adjust form text color */
-    font-weight: bold;
+    font-weight: normal;
     font-size: 16px;
 }
 
 div.stNumberInput input {
     background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent input background */
     color: black; /* Input text color */
-    font-weight: bold;
+    font-weight: normal;
 }
 
 div[data-testid="stToolbar"] {
