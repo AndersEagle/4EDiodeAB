@@ -48,11 +48,13 @@ def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pri
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
-    background-image: url('Background_Skyline.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline.jpg");
+    background-size: contain;  /* Ensures the image fits entirely within the container */
+    background-position: center center;  /* Centers the image in the container */
+    background-attachment: fixed;  /* Ensures the background stays fixed when scrolling */
+    height: 100vh;  /* Ensures the background fills the entire viewport height */
 }
+
 
 [data-testid="stSidebar"] {
     background-color: rgba(255, 255, 255, 0.8);
