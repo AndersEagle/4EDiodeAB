@@ -2,18 +2,23 @@ import streamlit as st
 
 # Function to calculate savings
 def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pris_armatur, additional_variable):
-    old_tube_watts = {"T8_58W": 70, "T8_36W": 43}
-    new_tube_watts = {"LED_20W": 20, "LED_18W": 18}
+    # Tube power data
+    old_tube_watts = {"T8_58W": 70, "T8_36W": 43, "T5_49W": 54, "T5_28W": 32}
+    new_tube_watts = {"LED_20W": 20, "LED_18W": 18, "LED_25W": 25, "LED_16W": 16}
 
-    if tube_type not in old_tube_watts:
+    # Map old tube types to new LED equivalents
+    tube_mapping = {
+        "T8_58W": "LED_20W",
+        "T8_36W": "LED_18W",
+        "T5_49W": "LED_25W",
+        "T5_28W": "LED_16W"
+    }
+
+    if tube_type not in old_tube_watts or tube_type not in tube_mapping:
         raise ValueError(f"Invalid tube type: {tube_type}")
 
     old_power_consumption = old_tube_watts[tube_type] * 2
-
-    if tube_type == "T8_58W":
-        new_power_consumption = new_tube_watts["LED_20W"] * 2
-    elif tube_type == "T8_36W":
-        new_power_consumption = new_tube_watts["LED_18W"] * 2
+    new_power_consumption = new_tube_watts[tube_mapping[tube_type]] * 2
 
     old_energy_kwh = (old_power_consumption * hours_per_year) / 1000
     new_energy_kwh = (new_power_consumption * hours_per_year) / 1000
@@ -38,17 +43,53 @@ def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pri
     return old_energy_cost, new_energy_cost, savings, break_even, total_inpris, saving_CO2, totalkostnad, trees_required
 
 
-
 # Streamlit Interface
-# Display the logo above the headline
-# Create two columns
-col1, col2 = st.columns([1, 1])  # Equal width columns
+# Add background image styling
+page_bg_img = """
+<style>
+[data-testid="stAppViewContainer"] {
+    background-image: url('Background_Skyline.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-# Display the first logo in the left column
+[data-testid="stSidebar"] {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+div.stTitle {
+    color: white;  /* White title text */
+    text-align: center;
+}
+
+div.stSubtitle {
+    color: white;
+    text-align: center;
+}
+
+label, div[data-testid="stMarkdownContainer"], .stButton, .stNumberInput {
+    color: black; /* Black for better readability */
+    font-weight: bold;
+    font-size: 16px;
+}
+
+div.stNumberInput input {
+    background-color: white;
+    color: black;
+}
+
+div[data-testid="stToolbar"] {
+    visibility: hidden;
+}
+</style>
+"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+# Display the logos
+col1, col2 = st.columns([1, 1])  # Equal width columns
 with col1:
     st.image("4EDIODE.png", use_container_width=True)
-
-# Display the second logo in the right column
 with col2:
     st.image("Diode_logga.png", use_container_width=True)
 
@@ -60,12 +101,17 @@ st.title("4E DIODE AB - Besparingskalkylator")
 num_fixtures = st.number_input("Ange antalet armaturer (2 rör i varje):", min_value=1, value=50)
 hours_per_year = st.number_input("Ange antalet driftstimmar/år:", min_value=1, value=4000)
 cost_per_kwh = st.number_input("Ange elpriset per kWh:", min_value=0.01, value=0.15, format="%.2f")
-tube_type = st.selectbox("Välj lysrörstyp som skall bytas:", ["T8_58W", "T8_36W"])
+tube_type = st.selectbox(
+    "Välj lysrörstyp som skall bytas:", 
+    ["T8_58W", "T8_36W", "T5_49W", "T5_28W"]
+)
 pris_armatur = st.number_input("Ange inköpskostnad för armatur:", min_value=1, value=800)
 additional_variable = st.number_input("Ange ev. extrakostnad, ex.vis installation:", min_value=1, value=1000)
 
 if st.button("Beräkna besparingen"):
-    old_cost, new_cost, savings, break_even, total_inpris, saving_CO2, totalkostnad, trees_required = calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pris_armatur, additional_variable)
+    old_cost, new_cost, savings, break_even, total_inpris, saving_CO2, totalkostnad, trees_required = calculate_savings(
+        num_fixtures, hours_per_year, cost_per_kwh, tube_type, pris_armatur, additional_variable
+    )
 
     st.write(f"### Resultat för {tube_type}:")
     st.write(f"**Årlig driftskostnad för de gamla lysrören:** SEK {old_cost:.0f}")
@@ -84,3 +130,4 @@ if st.button("Beräkna besparingen"):
         st.write(f"**Tid till breakeven:** {break_even_months:.2f} månader")
 
     st.write(f"**Antal träd som krävs för att kompensera för motsvarande CO2:** {trees_required:.0f} träd")
+
