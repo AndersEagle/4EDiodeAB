@@ -53,15 +53,22 @@ page_bg_img = """
     background-position: center center; /* Ensures the image is centered */
     background-repeat: no-repeat; /* Prevents tiling of the background */
     background-attachment: fixed; /* Keeps the background fixed when scrolling */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: absolute; /* Make sure the image is positioned relative to the viewport */
+    top: 0; /* Start from the top of the viewport */
+    left: 0; /* Start from the left of the viewport */
     height: 100vh; /* Full viewport height */
     width: 100vw; /* Full viewport width */
     margin: 0; /* Removes any default margin */
     padding: 0; /* Removes any default padding */
-    text-align: center; /* Centers the text horizontally */
+    z-index: -1; /* Place the background behind the content */
+}
+
+[data-testid="stAppViewContainer"] > div {
+    display: flex; /* Use flexbox for centering content */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    flex-direction: column; /* Stack content vertically */
+    min-height: 100vh; /* Ensure content takes full height */
 }
 
 /* Ensure the title text is white */
