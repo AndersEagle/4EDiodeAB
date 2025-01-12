@@ -49,16 +49,19 @@ page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
     background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline2.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center center; /* Ensures the image is centered */
+    background-repeat: no-repeat; /* Prevents tiling of the background */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;  /* Full viewport height */
-    padding: 0;
-    text-align: center;  /* Center the text horizontally */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    margin: 0; /* Removes any default margin */
+    padding: 0; /* Removes any default padding */
+    text-align: center; /* Centers the text horizontally */
 }
 
 /* Ensure the title text is white */
