@@ -61,6 +61,14 @@ page_bg_img = """
     text-align: center;  /* Center the text horizontally */
 }
 
+/* Ensure the title text is white */
+h1 {
+    color: white !important; /* Force white color */
+    font-size: 24px;
+    font-weight: normal; /* Remove bold */
+    text-align: center;
+}
+
 [data-testid="stSidebar"] {
     background-color: rgba(248, 247, 247, 0.8); /* Transparent sidebar */
 }
