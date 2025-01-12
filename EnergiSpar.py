@@ -73,6 +73,23 @@ h1 {
     background-color: rgba(248, 247, 247, 0.8); /* Transparent sidebar */
 }
 
+/* Button styling */
+div.stButton button {
+    color: black !important; /* Make button text black */
+    background-color: white !important; /* Ensure white background */
+    border: 2px solid #ccc; /* Add a subtle border */
+    padding: 10px 20px; /* Add some padding */
+    font-size: 16px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+div.stButton button:hover {
+    background-color: #f0f0f0 !important; /* Light grey on hover */
+    color: black !important; /* Keep text black on hover */
+    border-color: #aaa; /* Darker border on hover */
+}
+
 div.stTitle {
     color: white;  /* White title text */
     font-size: 24px;
