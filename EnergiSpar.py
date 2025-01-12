@@ -118,18 +118,38 @@ if st.button("Beräkna besparingen"):
     )
 
     st.markdown(f"<h3 style='color: white;'>Resultat för {tube_type}:</h3>", unsafe_allow_html=True)
-    st.write(f"**Årlig driftskostnad för de gamla lysrören:** SEK {old_cost:.0f}")
-    st.write(f"**Ny driftskostnad för de nya LED-rören:** SEK {new_cost:.0f}")
-    st.write(f"**Årlig driftsbesparing:** SEK {savings:.0f}")
-    st.write(f"**Inköpspris för ny armatur:** SEK {total_inpris:.0f}")
-    st.write(f"**Inkl. kostnad för installation:** SEK {totalkostnad:.0f}")
-    st.write(f"**Minskat CO2-utsläpp:** {saving_CO2:.2f} ton")
 
+    # Styling for the result boxes
+    result_box_style = """
+    <style>
+    .result-box {
+        background-color: white;
+        color: black;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: normal;
+        text-align: left;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    </style>
+    """
+    st.markdown(result_box_style, unsafe_allow_html=True)
+
+    # Display results inside styled boxes
+    st.markdown(f"<div class='result-box'>Årlig driftskostnad för de gamla lysrören: <b>SEK {old_cost:.0f}</b></div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='result-box'>Ny driftskostnad för de nya LED-rören: <b>SEK {new_cost:.0f}</b></div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='result-box'>Årlig driftsbesparing: <b>SEK {savings:.0f}</b></div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='result-box'>Inköpspris för ny armatur: <b>SEK {total_inpris:.0f}</b></div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='result-box'>Inkl. kostnad för installation: <b>SEK {totalkostnad:.0f}</b></div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='result-box'>Minskat CO2-utsläpp: <b>{saving_CO2:.2f} ton</b></div>", unsafe_allow_html=True)
+    
     if break_even > 1:
-        st.write(f"**Tid till breakeven:** {break_even:.2f} år")
+        st.markdown(f"<div class='result-box'>Tid till breakeven: <b>{break_even:.2f} år</b></div>", unsafe_allow_html=True)
     else:
-        st.write(f"**Tid till breakeven:** {12 * break_even:.2f} månader")
+        st.markdown(f"<div class='result-box'>Tid till breakeven: <b>{12 * break_even:.2f} månader</b></div>", unsafe_allow_html=True)
 
-    st.write(f"**Antal träd som krävs för att kompensera för motsvarande CO2:** {trees_required:.0f} träd")
+    st.markdown(f"<div class='result-box'>Antal träd som krävs för att kompensera för motsvarande CO2: <b>{trees_required:.0f} träd</b></div>", unsafe_allow_html=True)
 
 
