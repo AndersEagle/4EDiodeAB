@@ -47,70 +47,50 @@ def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pri
 # Add background image and centering styling
 page_bg_img = """
 <style>
+/* Add background image to the main app container */
 [data-testid="stAppViewContainer"] {
     background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline2.jpg");
-    background-size: cover !important; /* Ensures the image fully covers the container */
-    background-position: center center !important; /* Centers the image horizontally and vertically */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-attachment: fixed; /* Locks the image to the viewport */
-    position: fixed; /* Fixes the container to the screen */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Removes default margin */
-    padding: 0; /* Removes default padding */
-    overflow: hidden; /* Prevents scrolling issues */
-    z-index: -1; /* Moves the background behind the content */
+    background-size: cover; /* Ensures the image covers the container */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Locks the image in place during scrolling */
 }
 
-/* Adjusts the sidebar for better visibility */
+/* Ensure the sidebar has a transparent background */
 [data-testid="stSidebar"] {
-    background-color: rgba(248, 247, 247, 0.8); /* Transparent sidebar */
+    background-color: rgba(248, 247, 247, 0.8); /* Slight transparency */
 }
 
-/* Title and form labels styling */
+/* Title text styling */
 h1 {
-    color: white !important; /* Ensure the title is white */
+    color: white !important; /* Title text is white */
     font-size: 24px;
-    font-weight: normal;
-    text-align: center; /* Center the title text */
+    font-weight: normal; /* Remove bold */
+    text-align: center; /* Center-align the title */
 }
 
+/* Form labels */
 label {
-    color: white; /* Make labels white for better visibility */
+    color: white !important; /* Labels are white for better visibility */
     font-size: 18px;
 }
 
-/* Styling input boxes and buttons */
-div.stNumberInput input,
-div.stButton button {
-    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent input background */
+/* Buttons and inputs styling */
+div.stButton button, div.stNumberInput input {
+    background-color: rgba(255, 255, 255, 0.9); /* Light input background */
     color: black;
+    border-radius: 8px; /* Rounded corners */
     font-size: 16px;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 8px 12px;
 }
 
-/* Result box styling */
-.result-box {
-    background-color: white;
-    color: black;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    text-align: left;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Remove toolbar */
+/* Toolbar visibility (hides Streamlit menu) */
 div[data-testid="stToolbar"] {
-    visibility: hidden;
+    visibility: hidden; /* Hide Streamlit toolbar */
 }
 </style>
 """
+
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
