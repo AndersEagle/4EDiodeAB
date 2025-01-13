@@ -49,19 +49,17 @@ page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
     background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline2.jpg");
-    background-size: cover; /* Ensures the image covers the entire screen */
+    background-size: cover !important; /* Ensures the image covers the entire screen */
     background-position: center center !important; /* Centers the image horizontally and vertically */
-    background-repeat: no-repeat; /* Prevents tiling */
-    background-attachment: scroll; /* Keeps the image fixed on scroll */
+    background-repeat: no-repeat !important; /* Prevents tiling */
+    background-attachment: fixed !important; /* Locks the image to the viewport */
     position: relative; 
-    display: flex; /* Flexbox for content alignment */
-    flex-direction: column; /* Content stacked vertically */
-    justify-content: center; /* Default to starting at the top */
-    align-items: center; /* center with full width */
     height: 100vh; /* Full viewport height */
     width: 100vw; /* Full viewport width */
     margin: 0; /* No extra margins */
     padding: 0; /* No extra padding */
+    overflow: hidden; /* Prevents content overflow */
+    background-color: #000; /* Fallback color if the image doesn't load */
 }
 
 /* Ensure the title text is white */
@@ -119,7 +117,7 @@ div.stNumberInput input {
 }
 
 div[data-testid="stToolbar"] {
-    visibility: hidden; /* Hide the Streamlit menu */
+    visibility: none; /* Removes the Streamlit menu */
 }
 </style>
 """
