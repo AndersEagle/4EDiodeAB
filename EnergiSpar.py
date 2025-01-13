@@ -49,11 +49,12 @@ page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
     background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline2.jpg");
-    background-size: contain; /* Ensures the image covers the entire screen */
-    background-position: center center; /* Centers the image horizontally and vertically */
+    background-size: cover !important; /* Ensures the image covers the entire screen */
+    background-position: center center !important; /* Centers the image horizontally and vertically */
     background-attachment: fixed; /* Locks the image to the viewport */
     position: fixed; 
     height: 100vh; /* Full viewport height */
+    width: 100vw; 
 }
      
 /* Ensure the title text is white */
