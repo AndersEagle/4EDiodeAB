@@ -50,7 +50,7 @@ page_bg_img = """
 /* Background image applied to the main app container */
 [data-testid="stAppViewContainer"] {
     background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline3.jpg");
-    background-size: cover; /* Ensures the image covers the entire container */
+    background-size: contain; /* Ensures the image covers the entire container */
     background-position: center center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
     background-attachment: fixed; /* Keeps the image fixed when scrolling */
