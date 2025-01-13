@@ -93,6 +93,18 @@ div.stButton button {
     margin-bottom: 10px;
 }
 
+/* Result box styling */
+.result-box {
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-align: left;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 /* Remove toolbar */
 div[data-testid="stToolbar"] {
     visibility: hidden;
