@@ -47,50 +47,51 @@ def calculate_savings(num_fixtures, hours_per_year, cost_per_kwh, tube_type, pri
 # Add background image and centering styling
 page_bg_img = """
 <style>
-/* Add background image to the main app container */
+/* Background image applied to the main app container */
 [data-testid="stAppViewContainer"] {
     background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline2.jpg");
-    background-size: cover; /* Ensures the image covers the container */
+    background-size: cover; /* Ensures the image covers the entire container */
     background-position: center center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
-    background-attachment: fixed; /* Locks the image in place during scrolling */
+    background-attachment: fixed; /* Keeps the image fixed during scrolling */
+    min-height: 100vh; /* Ensures the background covers the full viewport height */
+    width: 100%; /* Ensures the background covers full width */
 }
 
-/* Ensure the sidebar has a transparent background */
+/* Styling for the sidebar with some transparency */
 [data-testid="stSidebar"] {
     background-color: rgba(248, 247, 247, 0.8); /* Slight transparency */
 }
 
 /* Title text styling */
 h1 {
-    color: white !important; /* Title text is white */
+    color: white !important; /* Make the title text white */
     font-size: 24px;
-    font-weight: normal; /* Remove bold */
+    font-weight: normal;
     text-align: center; /* Center-align the title */
 }
 
-/* Form labels */
+/* Form and buttons */
 label {
-    color: white !important; /* Labels are white for better visibility */
+    color: white !important; /* Labels are white for visibility */
     font-size: 18px;
 }
 
-/* Buttons and inputs styling */
+/* Custom button and input styles */
 div.stButton button, div.stNumberInput input {
-    background-color: rgba(255, 255, 255, 0.9); /* Light input background */
+    background-color: rgba(255, 255, 255, 0.9); /* Light background for inputs */
     color: black;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
     font-size: 16px;
     padding: 8px 12px;
 }
 
-/* Toolbar visibility (hides Streamlit menu) */
+/* Hide the Streamlit toolbar */
 div[data-testid="stToolbar"] {
-    visibility: hidden; /* Hide Streamlit toolbar */
+    visibility: hidden;
 }
 </style>
 """
-
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
