@@ -49,73 +49,57 @@ page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
     background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline2.jpg");
-    background-size: cover !important; /* Ensures the image covers the entire screen */
+    background-size: cover !important; /* Ensures the image fully covers the container */
     background-position: center center !important; /* Centers the image horizontally and vertically */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
     background-attachment: fixed; /* Locks the image to the viewport */
-    position: fixed; 
+    position: fixed; /* Fixes the container to the screen */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
     height: 100vh; /* Full viewport height */
-    width: 100vw; 
-}
-     
-/* Ensure the title text is white */
-h1 {
-    color: white !important; /* Force white color */
-    font-size: 24px;
-    font-weight: normal; /* Remove bold */
-    text-align: center;
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    overflow: hidden; /* Prevents scrolling issues */
+    z-index: -1; /* Moves the background behind the content */
 }
 
+/* Adjusts the sidebar for better visibility */
 [data-testid="stSidebar"] {
     background-color: rgba(248, 247, 247, 0.8); /* Transparent sidebar */
 }
 
-/* Button styling */
-div.stButton button {
-    color: black !important; /* Make button text black */
-    background-color: white !important; /* Ensure white background */
-    border: 2px solid #ccc; /* Add a subtle border */
-    padding: 10px 20px; /* Add some padding */
-    font-size: 16px;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-div.stButton button:hover {
-    background-color: #f0f0f0 !important; /* Light grey on hover */
-    color: black !important; /* Keep text black on hover */
-    border-color: #aaa; /* Darker border on hover */
-}
-
-div.stTitle {
-    color: white;  /* White title text */
+/* Title and form labels styling */
+h1 {
+    color: white !important; /* Ensure the title is white */
     font-size: 24px;
     font-weight: normal;
+    text-align: center; /* Center the title text */
 }
 
 label {
-    color: white;  /* Make the labels white */
-    font-size: 18px;  /* Increase font size for better readability */
-    font-weight: normal;
+    color: white; /* Make labels white for better visibility */
+    font-size: 18px;
 }
 
-div.stNumberInput label,
-div.stMarkdownContainer, div.stSelectbox label, div.stButton button {
-    color: white; /* Adjust form text color */
-    font-weight: normal;
-    font-size: 16px;
-}
-
-div.stNumberInput input {
+/* Styling input boxes and buttons */
+div.stNumberInput input,
+div.stButton button {
     background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent input background */
-    color: black; /* Input text color */
-    font-weight: normal;
+    color: black;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
+/* Remove toolbar */
 div[data-testid="stToolbar"] {
-    visibility: none; /* Removes the Streamlit menu */
+    visibility: hidden;
 }
 </style>
 """
+
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Center the app content
