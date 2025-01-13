@@ -53,7 +53,7 @@ page_bg_img = """
     background-size: cover; /* Ensures the image covers the entire container */
     background-position: center center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
-    background-attachment: fixed; /* Keeps the image fixed during scrolling */
+    background-attachment: fixed; /* Keeps the image fixed when scrolling */
     min-height: 100vh; /* Ensures the background covers the full viewport height */
     width: 100%; /* Ensures the background covers full width */
 }
@@ -149,5 +149,6 @@ if st.button("Beräkna besparingen"):
         st.markdown(f"<div class='result-box'>Tid till breakeven: <b>{12 * break_even:.2f} månader</b></div>", unsafe_allow_html=True)
 
     st.markdown(f"<div class='result-box'>Antal träd som krävs för att kompensera för motsvarande CO2: <b>{trees_required:.0f} träd</b></div>", unsafe_allow_html=True)
+
 
 
