@@ -50,18 +50,26 @@ page_bg_img = """
 [data-testid="stAppViewContainer"] {
     background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline2.jpg");
     background-size: cover; /* Ensures the image covers the entire screen */
-    background-position: center center; /* Ensures the image is centered */
-    background-repeat: no-repeat; /* Prevents tiling of the background */
-    background-attachment: fixed; /* Keeps the background fixed when scrolling */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-position: center; /* Centers the image horizontally and vertically */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Keeps the image fixed on scroll */
+    display: flex; /* Flexbox for content alignment */
+    flex-direction: column; /* Content stacked vertically */
+    justify-content: center; /* Default to starting at the top */
+    align-items: stretch; /* Stretch to full width */
     height: 100vh; /* Full viewport height */
     width: 100vw; /* Full viewport width */
-    margin: 0; /* Removes any default margin */
-    padding: 0; /* Removes any default padding */
-    text-align: center; /* Centers the text horizontally */
+    margin: 0; /* No extra margins */
+    padding: 0; /* No extra padding */
+}
+
+/* Centering the main content within the app */
+[data-testid="stAppViewContainer"] > div:first-child {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 100%; /* Ensure it takes the full height of the viewport */
+    width: 100%; /* Ensure full width */
 }
 
 /* Ensure the title text is white */
