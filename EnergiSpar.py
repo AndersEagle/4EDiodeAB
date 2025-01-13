@@ -49,7 +49,7 @@ page_bg_img = """
 <style>
 /* Background image applied to the main app container */
 [data-testid="stAppViewContainer"] {
-    background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline2.jpg");
+    background-image: url("https://raw.githubusercontent.com/AndersEagle/4EDiodeAB/main/Background_Skyline3.jpg");
     background-size: cover; /* Ensures the image covers the entire container */
     background-position: center center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
