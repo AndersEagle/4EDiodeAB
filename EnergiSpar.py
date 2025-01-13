@@ -63,15 +63,6 @@ page_bg_img = """
     padding: 0; /* No extra padding */
 }
 
-/* Centering the main content within the app */
-[data-testid="stAppViewContainer"] > div:first-child {
-    display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-    height: 100%; /* Ensure it takes the full height of the viewport */
-    width: 100%; /* Ensure full width */
-}
-
 /* Ensure the title text is white */
 h1 {
     color: white !important; /* Force white color */
