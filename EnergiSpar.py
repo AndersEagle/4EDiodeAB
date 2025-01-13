@@ -53,6 +53,7 @@ page_bg_img = """
     background-position: center center !important; /* Centers the image horizontally and vertically */
     background-repeat: no-repeat; /* Prevents tiling */
     background-attachment: scroll; /* Keeps the image fixed on scroll */
+    position: relative; 
     display: flex; /* Flexbox for content alignment */
     flex-direction: column; /* Content stacked vertically */
     justify-content: center; /* Default to starting at the top */
